@@ -12,7 +12,7 @@ exports.add = (req, res, Model, callback)->
 		callback res, err, document
 
 exports.update = (req, res, Model, callback)->
-	Model.findByIdAndUpdate req.params.id, { $set: fields }, (err, document)->
+	Model.findByIdAndUpdate req.params.id, { $set: req.body }, (err, document)->
 		callback res, err, document
 
 exports.delete = (req, res, Model, callback)->
