@@ -7,14 +7,14 @@ exports.add = (req, res, Model, callback)->
 	document.save (err, document)->
 		callback res, err, document
 
-exports.find = (conditions, res, Model, callback)->
+exports.find = (req, res, Model, conditions, callback)->
 	Model.findOne conditions, (err, document)->
 		callback res, err, document
  
-exports.update = (conditions, req, res, Model, callback)->
+exports.update = (req, res, Model, conditions, callback)->
 	Model.findOneAndUpdate conditions, { $set: req.body }, (err, document)->
 		callback res, err, document
 
-exports.delete = (conditions, res, Model, callback)->
+exports.delete = (req, res, Model, conditions, callback)->
 	Model.findOneAndRemove conditions, (err, document)->
 		callback res, err, document
