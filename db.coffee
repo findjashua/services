@@ -1,20 +1,19 @@
-exports.list = (req, res, Model, callback)->
-	Model.find {}, (err, documents)->
-		callback res, err, documents
+exports.list = (collection, callback)->
+	collection.find {}, (err, data)->
+		callback err, data
 
-exports.add = (req, res, Model, callback)->
-	document = new Model req.body
-	document.save (err, document)->
-		callback res, err, document
+exports.add = (collection, document, callback)->
+	document.save (err, data)->
+		callback err, data
 
-exports.find = (req, res, Model, conditions, callback)->
-	Model.findOne conditions, (err, document)->
-		callback res, err, document
+exports.find = (collection, conditions, callback)->
+	collection.findOne conditions, (err, data)->
+		callback err, data
  
-exports.update = (req, res, Model, conditions, callback)->
-	Model.findOneAndUpdate conditions, { $set: req.body }, (err, document)->
-		callback res, err, document
+exports.update = (collection, conditions, updateObject, callback)->
+	collection.findOneAndUpdate conditions, { $set: updateObject }, (err, data)->
+		callback err, data
 
-exports.delete = (req, res, Model, conditions, callback)->
-	Model.findOneAndRemove conditions, (err, document)->
-		callback res, err, document
+exports.delete = (collection, conditions, callback)->
+	collection.findOneAndRemove conditions, (err, data)->
+		callback err, data
