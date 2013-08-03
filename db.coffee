@@ -1,19 +1,19 @@
-exports.list = (collection, callback)->
-	collection.find {}, (err, data)->
+exports.list = (Model, callback)->
+	Model.find {}, (err, data)->
 		callback err, data
 
-exports.add = (collection, document, callback)->
+exports.add = (Model, document, callback)->
 	document.save (err, data)->
 		callback err, data
 
-exports.find = (collection, conditions, callback)->
-	collection.findOne conditions, (err, data)->
+exports.find = (Model, conditions, callback)->
+	Model.findOne conditions, (err, data)->
 		callback err, data
  
-exports.update = (collection, conditions, updateObject, callback)->
-	collection.findOneAndUpdate conditions, { $set: updateObject }, (err, data)->
+exports.update = (Model, conditions, updateObject, callback)->
+	Model.findOneAndUpdate conditions, { $set: updateObject }, (err, data)->
 		callback err, data
 
-exports.delete = (collection, conditions, callback)->
-	collection.findOneAndRemove conditions, (err, data)->
+exports.delete = (Model, conditions, callback)->
+	Model.findOneAndRemove conditions, (err, data)->
 		callback err, data
